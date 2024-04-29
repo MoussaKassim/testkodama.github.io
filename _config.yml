@@ -1,115 +1,102 @@
 repository: tomjoht/documentation-theme-jekyll
 
-output: web
-# this property is useful for conditional filtering of content that is separate from the PDF.
-
-topnav_title: KODAMA Knowledge Discovery by Accuracy Maximization
-# this appears on the top navigation bar next to the home button
-
-site_title: KODAMA Knowledge Discovery by Accuracy Maximization
-# this appears in the html browser tab for the site title (seen mostly by search engines, not users)
-
-company_name: Copyright 2024 Google LLC
-# this appears in the footer
-
-
-google_analytics: UA-66296557-1
-# if you have google-analytics ID, put it in. if not, edit this value to blank.
-
-host: 127.0.0.1
-# the preview server used. Leave as is.
-
-port: 4000
-# the port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
-
-exclude:
+---
+référentiel: tomjoht/documentation-theme-jekyll
+sortie: web # cette propriété est utile pour le filtrage conditionnel du contenu distinct du PDF.
+topnav_title: KODAMA Knowledge Discovery by Accuracy Maximization # ceci apparaît dans la barre de navigation supérieure à côté du bouton d'accueil
+site_title: KODAMA Knowledge Discovery by Accuracy Maximization # cela apparaît dans l'onglet du navigateur HTML pour le titre du site (vu principalement par les moteurs de recherche, pas par les utilisateurs )
+nom_entreprise: Copyright 2024 Google LLC # ceci apparaît dans le pied de page
+google_analytics: UA-66296557-1 # si vous avez un identifiant google-analytics, saisissez-le. sinon, modifiez cette valeur pour qu'elle soit vide.
+hôte: 127.0.0.1 # le serveur de prévisualisation utilisé. Laissez tel quel.
+port: 4000 # le port où l'aperçu est rendu. Vous pouvez laisser cela tel quel, sauf si d'autres versions de Jekyll utilisent ce même port, ce qui pourrait provoquer des conflits. dans ce cas, utilisez un autre port tel que 4006.
+exclure:
   - .idea/
   - .gitignore
-  - vendor
-# these are the files and directories that jekyll will exclude from the build
-
-feedback_subject_line: KODAMA
-
-feedback_email: tomjoht@gmail.com
-# used as a contact email for the Feedback link in the top navigation bar
-
-# feedback_disable: true
-# if you uncomment the previous line, the Feedback link gets removed
-
-# feedback_text: "Need help?"
-# if you uncomment the previous line, it changes the Feedback text
-
-# feedback_link: "http://helpy.io/"
-# if you uncomment the previous line, it changes where the feedback link points to
-
-highlighter: rouge
-# library used for syntax highlighting
-
-markdown: kramdown
-kramdown:
- input: GFM
- auto_ids: true
- hard_wrap: false
- syntax_highlighter: rouge
-
-# filter used to process markdown. note that kramdown differs from github-flavored markdown in some subtle ways
-
+  - supplier # ce sont les fichiers et répertoires que jekyll exclura de la build
+feedback_subject_line: KODAMA feedback_email: tomjoht@gmail.com # utilisé comme e-mail de contact pour le lien Commentaires dans la barre de navigation supérieure
+# feedback_disable: true # si vous décommentez la ligne précédente, le lien Commentaires est supprimé
+# feedback_text: "Besoin d'aide ?" # si vous décommentez la ligne précédente, cela change le texte du feedback
+# feedback_link: "http://helpy.io/" # si vous décommentez la ligne précédente, cela change l'endroit où le lien de feedback pointe vers le
+surligneur: rouge # bibliothèque utilisée pour la syntaxe highlighting
+markdown: kramdown kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+  syntax_highlighter: rouge # filtre utilisé pour traiter le markdown. notez que kramdown diffère du markdown à saveur github de manière subtile.
 collections:
-  tooltips:
-    output: false
-# collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
-
-defaults:
-  -
-    scope:
-      path: ""
+  info-bulles:
+    sortie: false # les collections sont déclarées ici. cela restitue le contenu dans _tooltips et le traite, mais ne l'affiche pas sous forme de fichiers réels dans la sortie, sauf si vous modifiez la sortie sur les valeurs par défaut :
+    - portée:
+        chemin: ""
       type: "pages"
-    values:
-      layout: "page"
-      comments: true
-      # if you don't want to use Commento.io and just hide comments, change true to false wherever you see the comments property
-      search: true
+      valeurs:
+        mise en page: commentaires
+        "page": true # si vous ne souhaitez pas utiliser Commento.io et simplement masquer les commentaires, remplacez true par false partout où vous voyez la propriété des commentaires
+        recherche: true
+        sidebar: home_sidebar
+        topnav:
+          topnav:
+  - scope:
+      chemin: ""
+    type: "tooltips"
+    valeurs:
+      mise en page: "page"
+      recherche: vrai
+      info-bulle: vrai
+  - portée:
+      chemin: ""
+    type: "posts"
+    valeurs:
+      mise en page: "post"
+      commentaires: vrai # si vous ne souhaitez pas utiliser Commento.io et masquez simplement les commentaires, remplacez true par false partout où vous voyez la propriété des commentaires
+      recherche: true
       sidebar: home_sidebar
-      topnav: topnav
-  -
-    scope:
-      path: ""
-      type: "tooltips"
-    values:
-      layout: "page"
-      search: true
-      tooltip: true
-
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-      comments: true
-      # if you don't want to use Commento.io and just hide comments, change true to false wherever you see the comments property
-      search: true
-      sidebar: home_sidebar
-      topnav: topnav
-
-# these are defaults used for the frontmatter for these file types
-
+      topnav:
+        topnav: # ce sont les valeurs par défaut utilisées pour le frontmatter pour ces types de fichiers
 sidebars:
-- home_sidebar
-- mydoc_sidebar
-- product1_sidebar
-- product2_sidebar
-- other
+  - home_sidebar
+  - mydoc_sidebar
+  - product1_sidebar
+  - product2_sidebar
+  - autre
+description: "Destiné comme un thème de documentation basé sur Jekyll pour les rédacteurs techniques documentant des logiciels et d'autres produits techniques, ce thème contient tous les éléments dont vous auriez besoin pour gérer plusieurs produits avec à la fois une navigation dans la barre latérale à plusieurs niveaux, des balises et d'autres fonctionnalités de documentation." # la description est utilisée dans le fichier feed.xml
+# nécessaire pour le fichier sitemap.xml uniquement
+# url : http://idratherbewriting.com
+# baseurl : /documentation-theme-jekyll
+github: [métadonnées] # Copyright 2021 Google LLC
 
-description: "Intended as a documentation theme based on Jekyll for technical writers documenting software and other technical products, this theme has all the elements you would need to handle multiple products with both multi-level sidebar navigation, tags, and other documentation features."
-# the description is used in the feed.xml file
+---
 
-# needed for sitemap.xml file only
-# url: http://idratherbewriting.com
-# baseurl: /documentation-theme-jekyll
+# Knowledge Discovery by Accuracy Maximization
 
+Stefano Cacciatore, Leonardo Tenori
 
-github: [metadata]
+**Date**: 2023-01-11
 
+## 1 Introduction
 
-# Copyright 2021 Google LLC
+KODAMA (Knowledge Discovery by Accuracy Maximization) est un nouvel algorithme d'apprentissage pour l'extraction de fonctionnalités non supervisée, spécifiquement conçu pour l'analyse ensembles de données bruyants et de grande dimension (Cacciatore et al., 2014). L'idée principale de l'algorithme original est d'utiliser une procédure d'itération pour produire une classification hypothétique en maximisant la précision prédictive validée de manière croisée en utilisant uniquement l'ensemble de données comme entrée. (aucune connaissance a priori n'est nécessaire), une procédure itérative permet une classification avec une précision élevée de validation croisée. Deux classificateurs différents sont implémentés dans ce package pour le calcul de la précision prédictive validée de manière croisée : les k-voisins les plus proches (kNN) et les moindres partiels. Carrés - Analyse Discriminante (PLSDA). Cette procédure est répétée plusieurs fois pour faire la moyenne des effets dus au caractère aléatoire de la procédure itérative. Après chaque exécution de la procédure, un vecteur de classification avec une précision élevée de validation croisée est obtenu. KODAMA collecte et traite ensuite ces résultats en construisant une matrice de dissimilarité pour fournir une vue holistique des données. Cette documentation présente l'utilisation de KODAMA.
+
+## 2 Installation
+
+### 2.1 Installation via CRAN
+
+Le package R KODAMA (version actuelle 1.1) fait partie du Comprehensive R Archive Network (CRAN)1. Le moyen le plus simple d'installer le package consiste à saisir la commande suivante dans votre session R : `install.packages("KODAMA")`. Nous suggérons d'installer le package R rgl pour la visualisation des données dans des tracés interactifs 3D.
+
+### 2.2 Installation manuelle à partir des sources
+
+Pour compiler le code C/C++ inclus dans le package pour une personnalisation ou une installation sur des systèmes d'exploitation alternatifs, le package peut être installé manuellement à partir des sources. À cette fin, ouvrez la page du package sur CRAN (Cacciatore et al., 2014), puis procédez comme suit :
+
+- Téléchargez KODAMA.tar.gz et enregistrez-le sur votre disque dur.
+- Ouvrez une fenêtre shell/terminal/invite de commande et modifiez dans le répertoire souhaité pour l'installation de KODAMA.tar.gz. Entrez `R CMD INSTALL KODAMA.tar.gz` pour installer le package. Notez que cela peut nécessiter des logiciels supplémentaires sur certaines plateformes. Windows nécessite que Rtools2 soit installé et disponible dans le chemin de recherche par défaut (variable d'environnement PATH). MAC OS X nécessite l'installation de développeurs Xcode et d'outils de ligne de commande.
+
+### 2.3 Problèmes de compatibilité
+
+Toutes les versions téléchargeables depuis CRAN ont été construites en utilisant la version R, R.3.2.3. Le package devrait fonctionner sans problèmes majeurs sur les versions R > 3.0.0.
+
+## 3 Mise en route
+
+Pour charger le package, entrez les instructions suivantes dans votre session R :
+
+```R
+library("KODAMA")
